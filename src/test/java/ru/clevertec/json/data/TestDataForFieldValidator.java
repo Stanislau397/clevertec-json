@@ -3,12 +3,9 @@ package ru.clevertec.json.data;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import lombok.SneakyThrows;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import ru.clevertec.json.validator.FieldValidator;
+import ru.clevertec.json.data.movie.Genre;
+import ru.clevertec.json.data.movie.Movie;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
 import java.util.Queue;

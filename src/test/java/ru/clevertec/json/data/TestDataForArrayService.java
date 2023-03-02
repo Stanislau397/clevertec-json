@@ -1,5 +1,7 @@
 package ru.clevertec.json.data;
 
+import ru.clevertec.json.data.movie.Genre;
+
 public class TestDataForArrayService {
 
     private Genre[] genres;
