@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static ru.clevertec.json.validator.FieldValidator.isFieldABoolean;
 import static ru.clevertec.json.validator.FieldValidator.isFieldAMap;
 import static ru.clevertec.json.validator.FieldValidator.isFieldANumber;
 
@@ -125,7 +126,7 @@ public class JsonService {
     public Map<String, String> findNumbersInJson(String json, Field[] fields) {
         Map<String, String> numbersMap = new LinkedHashMap<>();
         for (Field field : fields) {
-            if (isFieldANumber(field)) {
+            if (!isFieldABoolean(field)) {
                 String fieldName = field.getName();
                 Matcher numberMatcher = JsonPattern.jsonNumbersPattern(fieldName).matcher(json);
                 if (numberMatcher.find()) {
