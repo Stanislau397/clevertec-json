@@ -65,7 +65,7 @@ public class JsonParser {
                 Object[] objects = ((Collection<?>) field.get(object)).toArray();
                 json = json.concat(toJsonObjectsArray(objects));
 
-            } else if (isFieldAnArray(field) || isFieldACharacterArray(field)) {
+            } else if (isFieldAnArray(field)) {
                 if (isArrayComponentAPrimitive(field)) {
                     json = json.concat(toJsonPrimitivesArray(field, object));
                 } else {
@@ -131,7 +131,7 @@ public class JsonParser {
                         } else if (collectionClazz.isEnum()) {
                             collectionService.fillCollectionWithEnums(collection, collectionClazz, valuesArray);
                         } else {
-                            List<String> objectsArray = jsonService.findObjectsInJsonArray(objectClazzFields, objectEntry.getValue());
+                            List<String> objectsArray = jsonService.splitJsonArrayWithCustomObjectsIntoSeparateElements(objectClazzFields, objectEntry.getValue());
                             for (int k = 0; k < objectsArray.size(); k++) {
                                 collection.add(fromJson(objectsArray.get(k), collectionClazz));
                             }
@@ -139,15 +139,6 @@ public class JsonParser {
                     }
                 }
                 field.set(resultObject, collection);
-
-            } else if (isFieldAMap(field)) {
-
-                for (Map.Entry<String, String> element : maps.entrySet()) {
-                    String elementKey = element.getKey().replace("\"", "");
-                    if (elementKey.equals(field.getName())) {
-
-                    }
-                }
 
             } else if (isFieldAnObjectOfOtherCustomClass(field)) {
                 for (Map.Entry<String, String> objects : objectsMap.entrySet()) {
@@ -221,7 +212,7 @@ public class JsonParser {
                         String jsonArray = arrayEntry.getValue();
                         if (isFieldComponentAnObjectOfOtherCustomClass(field)) {
                             Field[] innerClazzFields = innerClazz.getDeclaredFields();
-                            List<String> values = jsonService.findObjectsInJsonArray(innerClazzFields, jsonArray);
+                            List<String> values = jsonService.splitJsonArrayWithCustomObjectsIntoSeparateElements(innerClazzFields, jsonArray);
                             Object objectsArray = Array.newInstance(field.getType().getComponentType(), values.size());
                             for (int j = 0; j < values.size(); j++) {
                                 Array.set(objectsArray, j, fromJson(values.get(j), innerClazz));

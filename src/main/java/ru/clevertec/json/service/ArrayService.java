@@ -98,7 +98,7 @@ public class ArrayService {
         return stringsArray;
     }
 
-    public Object buildArrayBasedOnFieldType(Field field, String jsonArray) throws IllegalAccessException {
+    public Object buildArrayBasedOnFieldType(Field field, String jsonArray) {
         Object fieldTypeBasedArray = new Object();
         if (isFieldComponentAString(field)) {
             fieldTypeBasedArray = buildStringsArrayFromJson(field, jsonArray);

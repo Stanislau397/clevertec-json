@@ -58,7 +58,7 @@ public class FieldValidator {
     }
 
     public static Boolean isFieldAnArray(Field field) {
-        return Array.class.isAssignableFrom(field.getType());
+        return field.getType().isArray();
     }
 
     public static Boolean isFieldAMap(Field field) {
@@ -128,7 +128,14 @@ public class FieldValidator {
     }
 
     public static Boolean isFieldANumber(Field field) {
-        return Number.class.isAssignableFrom(field.getType());
+        return Number.class.isAssignableFrom(field.getType())
+                || double.class.isAssignableFrom(field.getType())
+                || short.class.isAssignableFrom(field.getType())
+                || byte.class.isAssignableFrom(field.getType())
+                || int.class.isAssignableFrom(field.getType())
+                || float.class.isAssignableFrom(field.getType())
+                || double.class.isAssignableFrom(field.getType())
+                || long.class.isAssignableFrom(field.getType());
     }
 
     public static Boolean isFieldTypeAList(Field field) {

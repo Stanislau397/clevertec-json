@@ -137,7 +137,7 @@ public class JsonService {
         return numbersMap;
     }
 
-    public List<String> findObjectsInJsonArray(Field[] fields, String json) {
+    public List<String> splitJsonArrayWithCustomObjectsIntoSeparateElements(Field[] fields, String json) {
         List<String> objects = new ArrayList<>();
         Pattern splitPattern = JsonPattern.jsonArraySplitterPattern(fields);
         Matcher objectsMatcher = splitPattern.matcher(json);
