@@ -126,7 +126,7 @@ public class JsonService {
     public Map<String, String> findNumbersInJson(String json, Field[] fields) {
         Map<String, String> numbersMap = new LinkedHashMap<>();
         for (Field field : fields) {
-            if (!isFieldABoolean(field)) {
+            if (isFieldANumber(field)) {
                 String fieldName = field.getName();
                 Matcher numberMatcher = JsonPattern.jsonNumbersPattern(fieldName).matcher(json);
                 if (numberMatcher.find()) {

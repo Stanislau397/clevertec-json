@@ -140,15 +140,6 @@ public class JsonParser {
                 }
                 field.set(resultObject, collection);
 
-            } else if (isFieldAMap(field)) {
-
-                for (Map.Entry<String, String> element : maps.entrySet()) {
-                    String elementKey = element.getKey().replace("\"", "");
-                    if (elementKey.equals(field.getName())) {
-
-                    }
-                }
-
             } else if (isFieldAnObjectOfOtherCustomClass(field)) {
                 for (Map.Entry<String, String> objects : objectsMap.entrySet()) {
                     String key = objects.getKey().replace("\"", "");
