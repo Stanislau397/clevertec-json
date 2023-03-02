@@ -139,7 +139,7 @@ public class JsonService {
 
     public List<String> findObjectsInJsonArray(Field[] fields, String json) {
         List<String> objects = new ArrayList<>();
-        Pattern splitPattern = JsonPattern.jsonArraySplitterPattern(fields);
+        Pattern splitPattern = JsonPattern.jsonArrayOfCustomObjectsSplitterPattern(fields);
         Matcher objectsMatcher = splitPattern.matcher(json);
         while (objectsMatcher.find()) {
             String matchGroup = objectsMatcher.group();
