@@ -45,7 +45,7 @@ public class JsonPattern {
         return Pattern.compile("\\\"" + fieldName + "\\\":(true|false)");
     }
 
-    public static Pattern jsonArraySplitterPattern(Field[] fields) {
+    public static Pattern jsonArrayOfCustomObjectsSplitterPattern(Field[] fields) {
         String splitRegex = "";
         if (fields.length == 1) {
             splitRegex = "^(\\[|\\,|\\{\\\"" + fields[0].getName() + "\\\"\\)"
