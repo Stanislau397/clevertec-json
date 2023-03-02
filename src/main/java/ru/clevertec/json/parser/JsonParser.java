@@ -131,7 +131,7 @@ public class JsonParser {
                         } else if (collectionClazz.isEnum()) {
                             collectionService.fillCollectionWithEnums(collection, collectionClazz, valuesArray);
                         } else {
-                            List<String> objectsArray = jsonService.findObjectsInJsonArray(objectClazzFields, objectEntry.getValue());
+                            List<String> objectsArray = jsonService.splitJsonArrayWithCustomObjectsIntoSeparateElements(objectClazzFields, objectEntry.getValue());
                             for (int k = 0; k < objectsArray.size(); k++) {
                                 collection.add(fromJson(objectsArray.get(k), collectionClazz));
                             }
@@ -212,7 +212,7 @@ public class JsonParser {
                         String jsonArray = arrayEntry.getValue();
                         if (isFieldComponentAnObjectOfOtherCustomClass(field)) {
                             Field[] innerClazzFields = innerClazz.getDeclaredFields();
-                            List<String> values = jsonService.findObjectsInJsonArray(innerClazzFields, jsonArray);
+                            List<String> values = jsonService.splitJsonArrayWithCustomObjectsIntoSeparateElements(innerClazzFields, jsonArray);
                             Object objectsArray = Array.newInstance(field.getType().getComponentType(), values.size());
                             for (int j = 0; j < values.size(); j++) {
                                 Array.set(objectsArray, j, fromJson(values.get(j), innerClazz));
