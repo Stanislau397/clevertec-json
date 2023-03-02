@@ -90,7 +90,6 @@ public class ArrayService {
     }
 
     public Object buildStringsArrayFromJson(Field field, String json) {
-        System.out.println(json);
         String[] strings = json.split(",");
         Object stringsArray = Array.newInstance(field.getType().getComponentType(), strings.length);
         for (int i = 0; i < strings.length; i++) {
