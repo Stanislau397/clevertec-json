@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static ru.clevertec.json.validator.FieldValidator.isFieldABoolean;
 import static ru.clevertec.json.validator.FieldValidator.isFieldAMap;
 import static ru.clevertec.json.validator.FieldValidator.isFieldANumber;
 

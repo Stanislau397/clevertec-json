@@ -65,7 +65,7 @@ public class JsonParser {
                 Object[] objects = ((Collection<?>) field.get(object)).toArray();
                 json = json.concat(toJsonObjectsArray(objects));
 
-            } else if (isFieldAnArray(field) || isFieldACharacterArray(field)) {
+            } else if (isFieldAnArray(field)) {
                 if (isArrayComponentAPrimitive(field)) {
                     json = json.concat(toJsonPrimitivesArray(field, object));
                 } else {
