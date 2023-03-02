@@ -88,6 +88,8 @@ class JsonParserTest {
 
     @AfterEach
     void tearDown() {
+        jsonParser = null;
+        googleGson = null;
     }
 
     @Test

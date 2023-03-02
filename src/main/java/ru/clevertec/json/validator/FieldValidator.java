@@ -134,7 +134,8 @@ public class FieldValidator {
                 || byte.class.isAssignableFrom(field.getType())
                 || int.class.isAssignableFrom(field.getType())
                 || float.class.isAssignableFrom(field.getType())
-                || double.class.isAssignableFrom(field.getType());
+                || double.class.isAssignableFrom(field.getType())
+                || long.class.isAssignableFrom(field.getType());
     }
 
     public static Boolean isFieldTypeAList(Field field) {
